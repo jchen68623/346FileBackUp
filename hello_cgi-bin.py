@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>First Form</title>
-<link href="stylesFirstForm.css" type="text/css" rel="stylesheet" />
-</head>
-<body>
-        <form action = "/cgi-bin/hello.py" method = "get">
-        First Name: <input type = "text" name = "first_name">  <br />
+#!/usr/bin/python3
 
-        Last Name: <input type = "text" name = "last_name" />
-        <input type = "submit" value = "Submit" />
-        </form>
-<hr>
-</body>
-</html>
+import cgi, cgitb
+
+form = cgi.FieldStorage()
+
+first_name = form.getvalue('first_name')
+last_name  = form.getvalue('last_name')
+
+print ("Content-type: text/html\r\n\r\n")
+print ('<html>')
+print ('<head>')
+print ('<title>Hello World - Second CGI Program</title>')
+print ('</head>')
+print ('<body>')
+print ('<h2>Hello World! {} {} </h2>' .format(first_name, last_name))
+print ('</body>')
+print ('</html>')
+
